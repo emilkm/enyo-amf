@@ -7,7 +7,7 @@ Enyo-AMF is an Enyo plugin that provide [AMF 3 communication](https://github.com
 
 ## Lib
 
-As recommended by Enyo's documentation this add-on package is located in a subvolder _amfx_ of _lib_
+As recommended by Enyo's documentation this library is located in a subfolder of _lib_ called _amfx_
 
 # What Do I Get
 
