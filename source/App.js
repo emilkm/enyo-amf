@@ -3,8 +3,8 @@ enyo.kind({
     kind: "FittableRows",
     fit: true,
     create: function() {
-        enyo.amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
         this.inherited(arguments);
+        enyo.amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
     },
     components:[
         {kind: "onyx.Toolbar", content: "Hello World"},
