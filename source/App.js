@@ -3,13 +3,11 @@ enyo.kind({
 	kind: "FittableRows",
 	fit: true,
     create: function() {
-        enyo.amf.init("efxphp", "http://10.1.1.116/m-efts/server/gateway.php");
+        enyo.amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
         this.inherited(arguments);
     },
 	components:[
-		{kind: "onyx.Toolbar", content: "Hello World", components: [
-            {kind: "onyx.Button", content: "Login", ontap: "login"}
-        ]},
+		{kind: "onyx.Toolbar", content: "Hello World"},
 		{kind: "enyo.Scroller", fit: true, components: [
 			{name: "main", classes: "nice-padding", allowHtml: true}
 		]},
@@ -17,13 +15,10 @@ enyo.kind({
 			{kind: "onyx.Button", content: "Tap me", ontap: "helloWorldTap"}
 		]}
 	],
-    login: function(inSender, inEvent) {
-
-    },
 	helloWorldTap: function(inSender, inEvent) {
 		this.$.main.addContent("ping<br/>");
         var amfx = new enyo.Amfx({
-            source: "amfr",
+            source: "test",
             operation: "ping"
         });
         amfx.go([]);
