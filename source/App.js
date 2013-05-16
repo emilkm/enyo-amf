@@ -21,9 +21,9 @@ enyo.kind({
             source: "test",
             operation: "ping"
         });
-        amfx.go([]);
         amfx.response(this, "processResponse");
         amfx.error(this, "processError");
+        amfx.go([]);
     },
     processResponse: function(inSender, inResponse) {
         this.$.main.addContent(inResponse.data + "<br/>");
