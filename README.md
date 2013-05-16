@@ -3,11 +3,11 @@ enyo-amf
 
 AMF Remoting for Enyo
 
-Enyo-AMF is an Enyo plugin that provide [AMF 3 communication](https://github.com/emilkm/amfjs/). 
+Enyo-AMF is an Enyo [AMF 3 Client library](https://github.com/emilkm/amfjs/) plugin. 
 
 ## Lib
 
-As recommended by Enyo's documentation this library is located in a subfolder of _lib_ called _amfx_
+As recommended by Enyo's documentation the library is located in a subfolder of _lib_ called _amfx_
 
 # What Do I Get
 
@@ -23,8 +23,8 @@ enyo.kind({
 	kind: "FittableRows",
 	fit: true,
     create: function() {
-        enyo.amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
         this.inherited(arguments);
+        enyo.amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
     },
 	components:[
 		{kind: "onyx.Toolbar", content: "Hello World"},
