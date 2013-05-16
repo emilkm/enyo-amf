@@ -55,7 +55,7 @@ enyo.kind({
 ```
 
 ```javascript
-enyo.amf.init("efxphp", "http://127.0.0.1/server/gateway.php");
+enyo.amf.init("amfphp", "http://127.0.0.1/server/gateway.php");
 ```
 
 __enyo.amf.init__ sets the _destination_ and _endpoint_ of the AMF Client.
