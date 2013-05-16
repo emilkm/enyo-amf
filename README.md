@@ -11,11 +11,11 @@ As recommended by Enyo's documentation this library is located in a subfolder of
 
 # What Do I Get
 
-Enyo-AMF mimics the Enyo Ajax package which includes amf xhr (Amfx) functionality and an implementation of amf xhr as a Component (AmfService).
+Enyo-AMF mimics the Enyo Ajax package which includes amf xhr (Amfx) functionality, and an implementation of amf xhr as a Component (AmfService).
 
 # Enough talk, give me an example
 
-This example is based on [enyo bootplate](https://github.com/enyojs/bootplate/) application
+This example is based on the [enyo bootplate](https://github.com/enyojs/bootplate/) application
 
 ```javascript
 enyo.kind({
@@ -41,9 +41,9 @@ enyo.kind({
             source: "test",
             operation: "ping"
         });
-        amfx.go([]);
         amfx.response(this, "processResponse");
         amfx.error(this, "processError");
+		amfx.go([]);
     },
     processResponse: function(inSender, inResponse) {
         this.$.main.addContent(inResponse.data + "<br/>");
@@ -66,9 +66,9 @@ var amfx = new enyo.Amfx({
 	source: "test",
 	operation: "ping"
 });
-amfx.go([]);
 amfx.response(this, "processResponse");
 amfx.error(this, "processError");
+amfx.go([]);
 ```
 
 Sends and AMF request to the _test_ service, invoking the _ping_ method with no parameters. 
