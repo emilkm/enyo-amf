@@ -1,8 +1,10 @@
 enyo.depends(
-    "$lib/amfx",
-	"$lib/layout",
-	"$lib/onyx",	// To theme Onyx using Theme.less, change this line to $lib/onyx/source,
-	//"Theme.less",	// uncomment this line, and follow the steps described in Theme.less
-	"App.css",
-	"App.js"
+    "amf.js",
+    "AmfDeserializer.js",
+    "AmfReader.js",
+    "AmfSerializer.js",
+    "AmfService.js",
+    "AmfWriter.js",
+    "Amfx.js",
+    "AmfxProperties.js"
 );
