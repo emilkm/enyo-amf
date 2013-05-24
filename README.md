@@ -5,15 +5,9 @@ AMF Remoting for Enyo
 
 Enyo-AMF is an Enyo [AMF 3 Client library](https://github.com/emilkm/amfjs/) plugin. 
 
-## Lib
-
-As recommended by Enyo's documentation the library is located in a subfolder of _lib_ called _amfx_
-
-# What Do I Get
-
 Enyo-AMF mimics the Enyo Ajax package which includes amf xhr (Amfx) functionality, and an implementation of amf xhr as a Component (AmfService).
 
-# Enough talk, give me an example
+# A basic example
 
 This example is based on the [enyo bootplate](https://github.com/enyojs/bootplate/) application
 
