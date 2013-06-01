@@ -23,34 +23,42 @@ enyo.xhr = {
 		//
 		var method = inParams.method || "GET";
 		var async = !inParams.sync;
-        //
-        inParams.headers = inParams.headers || {};
-        // work around iOS 6 bug where non-GET requests are cached
-        // see http://www.einternals.com/blog/web-development/ios6-0-caching-ajax-post-requests
-        // not sure (yet) wether this will be required for later ios releases
-        if (method !== "GET" && enyo.platform.ios && enyo.platform.ios >= 6) {
-            if (inParams.headers["cache-control"] !== null) {
-                inParams.headers["cache-control"] = inParams.headers['cache-control'] || "no-cache";
-            }
-        }
-        // only setup handler when we have a callback
-        if (inParams.callback) {
-            this.makeReadyStateHandler(xhr, inParams.callback);
-        }
-        //
-        enyo.mixin(xhr, {
-            headers: inParams.headers,
-            body: inParams.body,
-            xhrFields: inParams.xhrFields,
-            mimeType: inParams.mimeType
-        });
 		//
-        if (inParams.username) {
+		if (inParams.username) {
 			xhr.open(method, url, async, inParams.username, inParams.password);
 		} else {
 			xhr.open(method, url, async);
 		}
 		//
+		enyo.mixin(xhr, inParams.xhrFields);
+		// only setup handler when we have a callback
+		if (inParams.callback) {
+			this.makeReadyStateHandler(xhr, inParams.callback);
+		}
+		//
+		inParams.headers = inParams.headers || {};
+		// work around iOS 6 bug where non-GET requests are cached
+		// see http://www.einternals.com/blog/web-development/ios6-0-caching-ajax-post-requests
+		// not sure (yet) wether this will be required for later ios releases
+		if (method !== "GET" && enyo.platform.ios && enyo.platform.ios >= 6) {
+			if (inParams.headers["cache-control"] !== null) {
+				inParams.headers["cache-control"] = inParams.headers['cache-control'] || "no-cache";
+			}
+		}
+		// user-set headers override any platform-default
+		if (xhr.setRequestHeader) {
+			for (var key in inParams.headers) {
+				if (inParams.headers[key]) {
+					xhr.setRequestHeader(key, inParams.headers[key]);
+				}
+			}
+		}
+		//
+		if((typeof xhr.overrideMimeType == "function") && inParams.mimeType) {
+			xhr.overrideMimeType(inParams.mimeType);
+		}
+		//
+		xhr.send(inParams.body || null);
 		if (!async && inParams.callback) {
 			xhr.onreadystatechange(xhr);
 		}
@@ -73,38 +81,24 @@ enyo.xhr = {
 	makeReadyStateHandler: function(inXhr, inCallback) {
 		if (window.XDomainRequest && inXhr instanceof window.XDomainRequest) {
 			inXhr.onload = function() {
-				var text;
-				if (typeof inXhr.responseText === "string") {
-					text = inXhr.responseText;
-				}
-				inCallback.apply(null, [text, inXhr]);
+                var data;
+                if (inXhr.responseType === "arraybuffer") {
+                    data = inXhr.response;
+                } else if (typeof inXhr.responseText === "string") {
+                    data = inXhr.responseText;
+                }
+                inCallback.apply(null, [data, inXhr]);
 			};
 		}
 		inXhr.onreadystatechange = function() {
-            if (inXhr.readyState === 1) {
-                // override xhr fields, for example responseType
-                enyo.mixin(inXhr, inXhr.xhrFields);
-                // user-set headers override any platform-default
-                if (inXhr.setRequestHeader) {
-                    for (var key in inXhr.headers) {
-                        if (inXhr.headers[key]) {
-                            inXhr.setRequestHeader(key, inXhr.headers[key]);
-                        }
-                    }
-                }
-                //
-                if ((typeof inXhr.overrideMimeType == "function") && inXhr.mimeType) {
-                    inXhr.overrideMimeType(inXhr.mimeType);
-                }
-                inXhr.send(inXhr.body || null);
-            } else if (inXhr.readyState === 4) {
-				var text;
-                if (inXhr.responseType == "arraybuffer") {
-                    text = inXhr.response;
+			if (inXhr.readyState == 4) {
+				var data;
+				if (inXhr.responseType === "arraybuffer") {
+                    data = inXhr.response;
                 } else if (typeof inXhr.responseText === "string") {
-					text = inXhr.responseText;
-				}
-				inCallback.apply(null, [text, inXhr]);
+                    data = inXhr.responseText;
+                }
+				inCallback.apply(null, [data, inXhr]);
 			}
 		};
 	},
