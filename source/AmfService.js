@@ -10,7 +10,7 @@ enyo.kind({
 	_enyo.AmfService_ is a component that performs AMF requests (_XmlHttpRequest_).
 
 	Internally, _enyo.AmfService_ uses _enyo.Async_ subkind (namely,
-	<a href="#enyo.Amfx">enyo.Ajax</a>) to manage transactions.
+	<a href="#enyo.Amfx">enyo.Amfx</a>) to manage transactions.
 	The _send_ method returns the Async instance used by the request.
 
 	_enyo.AmfService_ uses _enyo.Amfx_ and, like _enyo.Amfx_, it

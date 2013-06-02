@@ -28,17 +28,8 @@ enyo.kind({
     },
     //* @public
     /**
-     Sends the Ajax request with parameters _inParams_. _inParams_ values may be
+     Sends the AMF request with parameters _inParams_. _inParams_ values may be
      either Strings or Objects.
-
-     _inParams_ as an Object is converted into the url query string. For
-     instance, passing <code>{q: "searchTerm"}</code> will result in the addition
-     of the string `q="searchTerm"` to the current url query string.
-
-     _inParams_ as a String is used as the query part of the URL directly.
-
-     _inParams_ will not be converted into a POST body, it will always be used as
-     part of the URL query string if provided.
 
      When the request is completed, the code will set a `xhrResponse` property
      in the `enyo.Amfx` object with the subproperties `status`, `headers`, and
@@ -47,9 +38,6 @@ enyo.kind({
      are case-insensitive.
      */
     go: function(inParams) {
-        if (!enyo.isArray(inParams)) {
-            this.fail("inParams must be an array");
-        }
         //enyo.amf will process the queue and call startTimer and request
         enyo.amf.invoke(this, inParams);
         return this;
