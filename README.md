@@ -37,7 +37,7 @@ enyo.kind({
         });
         amfx.response(this, "processResponse");
         amfx.error(this, "processError");
-		amfx.go([]);
+		amfx.go();
     },
     processResponse: function(inSender, inResponse) {
         this.$.main.addContent(inResponse.data + "<br/>");
@@ -62,7 +62,7 @@ var amfx = new enyo.Amfx({
 });
 amfx.response(this, "processResponse");
 amfx.error(this, "processError");
-amfx.go([]);
+amfx.go();
 ```
 
 Sends and AMF request to the _test_ service, invoking the _ping_ method with no parameters. 

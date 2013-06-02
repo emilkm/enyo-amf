@@ -2,8 +2,11 @@ enyo.kind({
 	name: "AmfxTest",
 	kind: enyo.TestSuite,
 	timeout: 10000,
-	testPingPong: function () {
+    create: function() {
+        this.inherited(arguments);
         enyo.amf.init("amfphp", "http://emilkm.hp.af.cm/server/amf.php");
+    },
+	testPingPong: function () {
 		return new enyo.Amfx({source: "test", operation: "ping"})
 			.response(this, function(inSender, inResponse) {
 				if (inResponse.data === 'pong') {
