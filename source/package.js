@@ -1,11 +1,11 @@
 enyo.depends(
-    "amf.js",
-    "AmfDeserializer.js",
-    "AmfReader.js",
-    "AmfSerializer.js",
-    "AmfService.js",
-    "AmfWriter.js",
-    "Amfx.js",
-    "AmfxProperties.js",
-    "xhr.js"
+	"amf.js",
+	"AmfDeserializer.js",
+	"AmfReader.js",
+	"AmfSerializer.js",
+	"AmfService.js",
+	"AmfWriter.js",
+	"Amfx.js",
+	"AmfxProperties.js",
+	"xhr.js"
 );
