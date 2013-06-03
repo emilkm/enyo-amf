@@ -15,7 +15,7 @@ enyo.kind({
 	},
     testXhrArrayBuffer: function() {
         var self = this;
-        var x = enyo.xhr.request({
+        enyo.xhr.request({
             url: "php/test8.php",
             method: "POST",
             sync: false,

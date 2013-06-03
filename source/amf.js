@@ -30,7 +30,6 @@ enyo.amf = {
 	destination: "",
 	endpoint: "",
 	headers: null,
-	doNothing: new Function(),
 	sessionId: null,
 
 	init: function(destination, endpoint, timeout) {

@@ -104,7 +104,7 @@ enyo.kind({
 				this.fail(inXhr.status);
 			} else {
 				var response = this.xhrToResponse(inXhr);
-				if (response.code != 0) {
+				if (response.code !== 0) {
 					this.fail(response);
 				} else {
 					this.respond(response);
