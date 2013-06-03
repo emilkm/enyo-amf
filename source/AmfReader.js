@@ -205,18 +205,38 @@ enyo.kind({
 
 	readDouble: function() {
 		var c1, c2, c3, c4, c5, c6, c7, c8, d;
-		c1 = this.read() & 255; c2 = this.read() & 255;
+		c1 = this.read() & 255;
+		c2 = this.read() & 255;
 		if (c1 === 255) {
-			if (c2 === 248) { return Number.NaN; }
-			if (c2 === 240) { return Number.NEGATIVE_INFINITY; }
-		} else if (c1 === 127 && c2 === 240) { return Number.POSITIVE_INFINITY };
-		c3 = this.read() & 255; c4 = this.read() & 255; c5 = this.read() & 255; c6 = this.read() & 255; c7 = this.read() & 255; c8 = this.read() & 255;
-		if (!c1 && !c2 && !c3 && !c4) { return 0; }
-		for (d = (c1 << 4 & 2047 | c2 >> 4) - 1023, c2 = ((c2 & 15) << 16 | c3 << 8 | c4).toString(2), c3 = c2.length; c3 < 20; c3++) c2 = "0" + c2;
+			if (c2 === 248) {
+				return Number.NaN;
+			}
+			if (c2 === 240) {
+				return Number.NEGATIVE_INFINITY;
+			}
+		} else if (c1 === 127 && c2 === 240) {
+			return Number.POSITIVE_INFINITY;
+		}
+		c3 = this.read() & 255;
+		c4 = this.read() & 255;
+		c5 = this.read() & 255;
+		c6 = this.read() & 255;
+		c7 = this.read() & 255;
+		c8 = this.read() & 255;
+		if (!c1 && !c2 && !c3 && !c4) {
+			return 0;
+		}
+		for (d = (c1 << 4 & 2047 | c2 >> 4) - 1023, c2 = ((c2 & 15) << 16 | c3 << 8 | c4).toString(2), c3 = c2.length; c3 < 20; c3++) {
+			c2 = "0" + c2;
+		}
 		c6 = ((c5 & 127) << 24 | c6 << 16 | c7 << 8 | c8).toString(2);
-		for (c3 = c6.length; c3 < 31; c3++) c6 = "0" + c6;
+		for (c3 = c6.length; c3 < 31; c3++) {
+			c6 = "0" + c6;
+		}
 		c5 = parseInt(c2 + (c5 >> 7 ? "1" : "0") + c6, 2);
-		if (c5 === 0 && d == -1023) { return 0; }
+		if (c5 === 0 && d == -1023) {
+			return 0;
+		}
 		return (1 - (c1 >> 7 << 1)) * (1 + Math.pow(2, -52) * c5) * Math.pow(2, d);
 	},
 
