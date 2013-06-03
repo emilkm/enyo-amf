@@ -17,8 +17,7 @@ enyo.kind({
 			for (var body in message.bodies) {
 				this.writeBody(message.bodies[body]);
 			}
-		} catch (error) {
-			console.log(error);
+		} catch (e) {
 		}
 		//return this.writer.getResult();
 		return this.writer.data;

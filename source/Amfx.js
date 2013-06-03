@@ -1,20 +1,20 @@
 /**
- _enyo.Amfx_ is a wrapper for _XmlHttpRequest_ that uses
- the <a href="#enyo.Async">enyo.Async</a> API.
+	_enyo.Amfx_ is a wrapper for _XmlHttpRequest_ that uses
+	the <a href="#enyo.Async">enyo.Async</a> API.
 
- _enyo.Amfx_ publishes all the properties of the
- <a href="#enyo.AmfxProperties">enyo.AmfxProperties</a>
- object.
+	_enyo.Amfx_ publishes all the properties of the
+	<a href="#enyo.AmfxProperties">enyo.AmfxProperties</a>
+	object.
 
- Like _enyo.Async_, _enyo.Amfx_ is an **Object**, not a **Component**.
- Do not try to make _enyo.Amfx_ objects inside a _components_ block.
- If you want to use _enyo.Amfx_ as a component, you should probably
- be using <a href="#enyo.AmfService">enyo.AmfService</a> instead.
+	Like _enyo.Async_, _enyo.Amfx_ is an **Object**, not a **Component**.
+	Do not try to make _enyo.Amfx_ objects inside a _components_ block.
+	If you want to use _enyo.Amfx_ as a component, you should probably
+	be using <a href="#enyo.AmfService">enyo.AmfService</a> instead.
 
- For more information, see the documentation on
- [Consuming Amf Services](https://github.com/emilkm/enyo-amf/wiki/Consuming-Amf-Services)
- in the Enyo-AMF Developer Guide.
- */
+	For more information, see the documentation on
+	[Consuming Amf Services](https://github.com/emilkm/enyo-amf/wiki/Consuming-Amf-Services)
+	in the Enyo-AMF Developer Guide.
+*/
 enyo.kind({
 	name: "enyo.Amfx",
 	kind: enyo.Async,
@@ -28,15 +28,15 @@ enyo.kind({
 	},
 	//* @public
 	/**
-	 Sends the AMF request with parameters _inParams_. _inParams_ values may be
-	 either Strings or Objects.
+		Sends the AMF request with parameters _inParams_. _inParams_ values may be
+		either Strings or Objects.
 
-	 When the request is completed, the code will set a `xhrResponse` property
-	 in the `enyo.Amfx` object with the subproperties `status`, `headers`, and
-	 `body`.  These cache the results from the XHR for later use.  The keys for
-	 the `headers` object have been converted to all lower case as HTTP headers
-	 are case-insensitive.
-	 */
+		When the request is completed, the code will set a `xhrResponse` property
+		in the `enyo.Amfx` object with the subproperties `status`, `headers`, and
+		`body`.  These cache the results from the XHR for later use.  The keys for
+		the `headers` object have been converted to all lower case as HTTP headers
+		are case-insensitive.
+	*/
 	go: function(inParams) {
 		//enyo.amf will process the queue and call startTimer and request
 		enyo.amf.invoke(this, inParams);

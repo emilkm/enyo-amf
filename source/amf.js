@@ -30,7 +30,7 @@ enyo.amf = {
 	destination: "",
 	endpoint: "",
 	headers: null,
-	doNothing: new Function,
+	doNothing: new Function(),
 	sessionId: null,
 
 	init: function(destination, endpoint, timeout) {
@@ -105,7 +105,7 @@ enyo.amf = {
 			headers: [],
 			messageId: null,
 			clientId: null
-		}
+		};
 	},
 
 	createMessage: function(source, operation, params) {
@@ -141,7 +141,7 @@ enyo.amf = {
 	},
 
 	invoke: function(async, params) {
-		if (this.clientId == null && this.messageQueue.length == 0) {
+		if (this.clientId == null && this.messageQueue.length === 0) {
 			var amfx = new enyo.Amfx({
 				source: "ping",
 				operation: "ping"
@@ -174,6 +174,6 @@ enyo.amf = {
 	},
 
 	pingError: function(inSender, inResponse) {
-		alert("pingError");
+		//alert("pingError");
 	}
 };

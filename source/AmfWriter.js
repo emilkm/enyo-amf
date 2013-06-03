@@ -114,18 +114,21 @@ enyo.kind({
 	},
 	
 	_getDouble: function(v) {
-		var r = [0,0];
-		if (v != v) return r[0] = -524288, r;
-		var d = v < 0 || v === 0 && 1 / v < 0 ? -2147483648 : 0, v = Math.abs(v);
-		if (v === Number.POSITIVE_INFINITY) return r[0] = d | 2146435072, r;
-		for (var e = 0; v >= 2 && e <= 1023;) e++, v /= 2;
-		for (; v < 1 && e >= -1022;) e--, v *= 2;
+		var e, d, i, r = [0,0];
+		if (v != v) { r[0] = -524288; return r };
+		d = v < 0 || v === 0 && 1 / v < 0 ? -2147483648 : 0; v = Math.abs(v);
+		if (v === Number.POSITIVE_INFINITY) { r[0] = d | 2146435072; return r; }
+		for (e = 0; v >= 2 && e <= 1023;) { e++; v /= 2; }
+		for (; v < 1 && e >= -1022;) { e--; v *= 2; }
 		e += 1023;
-		if (e == 2047) return r[0] = d | 2146435072, r;
-		var i;
-		e == 0
-			? (i = v * Math.pow(2, 23) / 2, v = Math.round(v * Math.pow(2, 52) / 2))
-			: (i = v * Math.pow(2, 20) - Math.pow(2, 20), v = Math.round(v * Math.pow(2, 52) - Math.pow(2, 52)));
+		if (e == 2047) { r[0] = d | 2146435072; return r; }
+		if (e === 0) {
+			i = v * Math.pow(2, 23) / 2;
+			v = Math.round(v * Math.pow(2, 52) / 2);
+		} else {
+			i = v * Math.pow(2, 20) - Math.pow(2, 20);
+			v = Math.round(v * Math.pow(2, 52) - Math.pow(2, 52));
+		}
 		r[0] = d | e << 20 & 2147418112 | i & 1048575;
 		r[1] = v;
 		return r;
@@ -134,7 +137,7 @@ enyo.kind({
 	writeDouble: function(v) {
 		v = this._getDouble(v);
 		this.writeUnsignedInt(v[0]);
-		this.writeUnsignedInt(v[1])
+		this.writeUnsignedInt(v[1]);
 	},
 	
 	getResult: function() {
