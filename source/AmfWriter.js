@@ -170,7 +170,7 @@ enyo.kind({
 	},
 	
 	writeStringWithoutType: function(v) {
-		if (v.length == 0) {
+		if (v.length === 0) {
 			this.writeUInt29(1);
 		} else {
 			if (!this.stringByReference(v)) {
