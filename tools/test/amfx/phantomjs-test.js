@@ -23,6 +23,7 @@ page.onConsoleMessage = function (msg) {
 };
 
 page.onError = function(msg, trace) {
+	console.log("page error, msg: " + msg);
 	phantom.exit(2);
 };
 
