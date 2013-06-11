@@ -1,3 +1,3 @@
-tools/node_modules
-tools/minifier/path-relative-shim.js
-tools/minifier/node_modules
+enyo/tools/node_modules
+enyo/tools/minifier/path-relative-shim.js
+enyo/tools/minifier/node_modules
