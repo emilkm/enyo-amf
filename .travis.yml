@@ -10,3 +10,5 @@ before_script:
   - sleep 3
   - "curl http://127.0.0.1:8080/README.md"
 script: "jshint . && phantomjs tools/test/amfx/phantomjs-test.js"
+after_script:
+  - "cat php.log"
