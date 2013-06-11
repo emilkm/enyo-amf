@@ -3,6 +3,6 @@ node_js:
   - "0.10"
 install: "npm -g install jshint"
 before_script: 
-  - curl -s http://emilkm.hp.af.cm/php-server.tar.gz php-server.tar.gz
-  - tar -zxvf php-server.tar.gz
+  - "curl -s http://emilkm.hp.af.cm/php-server.tar.gz php-server.tar.gz"
+  - "tar -zxvf php-server.tar.gz"
 script: "jshint . && phantomjs tools/test/amfx/phantomjs-test.js"
