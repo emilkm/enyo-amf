@@ -6,4 +6,7 @@ before_script:
   - "wget http://emilkm.hp.af.cm/php-server.tar.gz"
   - "tar -zxvf php-server.tar.gz"
   - "chmod 777 server/php"
+  - "server/php -S 127.0.0.1:8080"
+  - sleep 3
+  - "curl http://127.0.0.1:8080/README.md"
 script: "jshint . && phantomjs tools/test/amfx/phantomjs-test.js"
