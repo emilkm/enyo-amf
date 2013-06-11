@@ -24,6 +24,7 @@ page.onConsoleMessage = function (msg) {
 
 page.onError = function(msg, trace) {
 	console.log("page error, msg: " + msg);
+	console.log("page error, trace: " + trace);
 	phantom.exit(2);
 };
 
