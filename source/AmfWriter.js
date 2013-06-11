@@ -105,7 +105,7 @@ enyo.kind({
 	},
 	
 	writeUnsignedInt: function(v) {
-		//v < 0 && (v = -(v ^ 4294967295) - 1);
+		v < 0 && (v = -(v ^ 4294967295) - 1);
 		v &= 4294967295;
 		this.write((v >> 24) & 255);
 		this.write((v >> 16) & 255);

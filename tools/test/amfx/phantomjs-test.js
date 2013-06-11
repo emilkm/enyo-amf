@@ -4,6 +4,8 @@
 // PhantomJS driver for loading enyo-amf tests and checking for failures
 var page = require('webpage').create();
 
+page.settings.localToRemoteUrlAccessEnabled = true;
+
 page.onConsoleMessage = function (msg) {
 	console.log("JS: " + msg);
 	if (msg === "TEST RUNNER FINISHED") {
