@@ -5,4 +5,6 @@ install: "npm -g install jshint"
 before_script: 
   - "wget http://emilkm.hp.af.cm/php-server.tar.gz"
   - "tar -zxvf php-server.tar.gz"
+  - "chmod 777 server/php"
+  - "server/php -S 127.0.0.1:8080"
 script: "jshint . && phantomjs tools/test/amfx/phantomjs-test.js"
