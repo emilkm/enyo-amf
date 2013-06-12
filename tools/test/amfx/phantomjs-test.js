@@ -5,6 +5,7 @@
 var page = require('webpage').create();
 
 page.settings.localToRemoteUrlAccessEnabled = true;
+page.settings.webSecurityEnabled = false;
 
 page.onConsoleMessage = function (msg) {
 	console.log("JS: " + msg);
