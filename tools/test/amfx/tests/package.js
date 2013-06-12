@@ -1,5 +1,5 @@
 enyo.depends(
-	"XhrTest.js",
+	"XhrTest.js"/*,
 	"AmfxTest.js",
-    "AmfServiceTest.js"
+    "AmfServiceTest.js"*/
 );
