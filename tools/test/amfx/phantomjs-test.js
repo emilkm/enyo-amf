@@ -4,6 +4,8 @@
 // PhantomJS driver for loading enyo-amf tests and checking for failures
 var page = require('webpage').create();
 
+page.settings.localToRemoteUrlAccessEnabled = true;
+
 page.onConsoleMessage = function (msg) {
 	console.log("JS: " + msg);
 	if (msg === "TEST RUNNER FINISHED") {
@@ -11,27 +13,28 @@ page.onConsoleMessage = function (msg) {
 			return (document.querySelector(".enyo-amf-testcase-failed") === null);
 		});
 		if (pass) {
-			console.log("enyo-amf tests passed!");
+			console.log("enyo-amf tests passed");
 			phantom.exit(0);
 		} else {
-			console.log("enyo-amf tests failed. :(");
+			console.log("enyo-amf tests failed");
 			phantom.exit(1);
 		}
 	}
 };
 
 page.onError = function(msg, trace) {
-	phantom.exit(1);
+	console.log("page error, msg: " + msg);
+	phantom.exit(2);
 };
 
-page.open("tools/test/amfx/index.html", function(status) {
+page.open("http://127.0.0.1:8080/lib/amfx/tools/test/amfx/index.html", function(status) {
 	if (status !== "success") {
-		console.log("Error loading page, status: " + status);
-		phantom.exit(1);
+		console.log("error loading page, status: " + status);
+		phantom.exit(3);
 	}
 });
 
 setTimeout(function() {
 	console.log("timed out after 1 minute");
-	phantom.exit(1);
+	phantom.exit(4);
 }, 60 * 1000);
