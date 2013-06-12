@@ -6,7 +6,7 @@ enyo.kind({
         this.inherited(arguments);
         enyo.amf.init("amfphp", "http://emilkm.hp.af.cm/server/amf.php");
     },
-    _testAmfService: function(inProps, inParams, inAssertFn) {
+    _invokeAmfService: function(inProps, inParams, inAssertFn) {
         var amfs = this.createComponent({kind: enyo.AmfService, onResponse: "_response", onError: "_error", assertFn: inAssertFn}, inProps);
         return amfs.send(inParams);
     },
@@ -17,7 +17,7 @@ enyo.kind({
         this.finish("error: " + inResponse.data);
     },
     testPingPong: function() {
-        this._testAmfService({source: "test", operation: "ping"}, null, function(inResponse) {
+        this._invokeAmfService({source: "test", operation: "ping"}, null, function(inResponse) {
             return inResponse.data === 'pong';
         });
     },

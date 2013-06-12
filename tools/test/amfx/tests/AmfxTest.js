@@ -18,6 +18,6 @@ enyo.kind({
 			.error(this, function(inSender, inResponse) {
 				this.finish("ping-pong request failed");
 			})
-			.go([]);
+			.go();
 	}
 });
