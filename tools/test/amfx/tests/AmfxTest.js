@@ -4,7 +4,7 @@ enyo.kind({
 	timeout: 10000,
     create: function() {
         this.inherited(arguments);
-        enyo.amf.init("amfphp", "http://127.0.0.1:8080/server/amf.php");
+        enyo.amf.init("amfphp", "http://emilkm.hp.af.cm/server/amf.php");
     },
 	testPingPong: function () {
 		return new enyo.Amfx({source: "test", operation: "ping"})
