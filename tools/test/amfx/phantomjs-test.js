@@ -24,11 +24,11 @@ page.onConsoleMessage = function (msg) {
 
 page.onError = function(msg, trace) {
 	console.log("page error, msg: " + msg);
-	console.log("page error, trace: " + trace);
+	//console.log("page error, trace: " + trace);
 	phantom.exit(2);
 };
 
-page.open("tools/test/amfx/index.html", function(status) {
+page.open("lib/amfx/tools/test/amfx/index.html", function(status) {
 	if (status !== "success") {
 		console.log("error loading page, status: " + status);
 		phantom.exit(3);
