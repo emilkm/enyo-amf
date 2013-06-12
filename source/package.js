@@ -6,6 +6,5 @@ enyo.depends(
 	"AmfService.js",
 	"AmfWriter.js",
 	"Amfx.js",
-	"AmfxProperties.js",
-	"xhr.js"
+	"AmfxProperties.js"
 );

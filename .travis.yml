@@ -2,4 +2,13 @@ language: node_js
 node_js:
   - "0.10"
 install: "npm -g install jshint"
+before_script: 
+  - "wget http://emilkm.hp.af.cm/php-server.tar.gz"
+  - "tar -zxvf php-server.tar.gz"
+  - "chmod 777 server/php"
+  - "server/php -S 127.0.0.1:8080 2>&1 > php.log &"
+  - sleep 3
+  - "curl http://127.0.0.1:8080/README.md"
 script: "jshint . && phantomjs tools/test/amfx/phantomjs-test.js"
+after_script:
+  - "cat php.log"

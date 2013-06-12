@@ -1,0 +1,4 @@
+enyo/tools/node_modules
+enyo/tools/minifier/path-relative-shim.js
+enyo/tools/minifier/node_modules
+lib/extra/test
