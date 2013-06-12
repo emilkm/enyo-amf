@@ -11,7 +11,7 @@ page.onConsoleMessage = function (msg) {
 	console.log("JS: " + msg);
 	if (msg === "TEST RUNNER FINISHED") {
 		var pass = page.evaluate(function() {
-			return (document.querySelector(".enyo-amf-testcase-failed") === null);
+			return (document.querySelector(".enyo-testcase-failed") === null);
 		});
 		if (pass) {
 			console.log("enyo-amf tests passed");
