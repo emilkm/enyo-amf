@@ -28,7 +28,7 @@ page.onError = function(msg, trace) {
 	phantom.exit(2);
 };
 
-page.open("http://127.0.0.1:8080/lib/amfx/tools/test/amfx/index.html", function(status) {
+page.open("http://localhost:8000/lib/amfx/tools/test/amfx/index.html", function(status) {
 	if (status !== "success") {
 		console.log("error loading page, status: " + status);
 		phantom.exit(3);
