@@ -7,7 +7,7 @@ var page = require('webpage').create();
 page.settings.localToRemoteUrlAccessEnabled = true;
 page.settings.webSecurityEnabled = false;
 
-page.onConsoleMessage = function (msg) {
+page.onConsoleMessage = function(msg) {
 	console.log("JS: " + msg);
 	if (msg === "TEST RUNNER FINISHED") {
 		var pass = page.evaluate(function() {
@@ -28,7 +28,7 @@ page.onError = function(msg, trace) {
 	phantom.exit(2);
 };
 
-page.open("http://localhost:8000/lib/amfx/tools/test/amfx/index.html", function(status) {
+page.open("http://localhost:8000/enyo-amf-app/lib/amfx/tools/test/amfx/phantomjs-index.html", function(status) {
 	if (status !== "success") {
 		console.log("error loading page, status: " + status);
 		phantom.exit(3);
